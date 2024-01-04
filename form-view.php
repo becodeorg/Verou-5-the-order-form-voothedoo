@@ -3,10 +3,8 @@
         foreach ($products as $product) {
         $total = $product["price"] + $total;
     }
-    echo $total;
-    echo "<pre>"; 
+    // echo $total;
 
-    echo "</pre>";
 ?>
 
 <!doctype html>
@@ -36,11 +34,11 @@
         </ul>
     </nav>
     */ ?>
-    <form action="./order-confrimation.php" method="POST">
+    <form method="POST">
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="email">E-mail:</label>
-                <input type="email" id="email" name="email" class="form-control"/>
+                <input type="email" id="email"  name="email" class="form-control"/>
             </div>
             <div></div>
         </div>

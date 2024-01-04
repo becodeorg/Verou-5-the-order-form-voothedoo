@@ -34,26 +34,56 @@ $totalValue = 0;
 
 function validate()
 {
-    // TODO: This function will send a list of invalid fields back
-    return [];
+    $invalidFields = [];
+
+    $email = htmlspecialchars($_POST['email']);
+    if (empty($email)) {
+        $invalidFields[] = 'E-mail';
+    }
+
+    $street = htmlspecialchars($_POST['street']);
+    if (empty($street)) {
+        $invalidFields[] = 'Street name';
+    }
+
+    $streetNumber = htmlspecialchars($_POST['streetnumber']);
+    if (empty($streetNumber)) {
+        $invalidFields[] = 'Street number';
+    }
+
+    $city = htmlspecialchars($_POST['city']);
+    if (empty($city)) {
+        $invalidFields[] = 'City name';
+    }
+
+    $zipCode = htmlspecialchars($_POST['zipcode']);
+    if (empty($zipCode)) {
+        $invalidFields[] = 'Zip Code';
+    }
+    
+    return $invalidFields;
 }
 
 function handleForm()
 {
-    // TODO: form related tasks (step 1)
-
-    // Validation (step 2)
     $invalidFields = validate();
+$streetName = ucfirst(htmlspecialchars($_POST['street']));
+$streetNo = htmlspecialchars($_POST['streetnumber']);
+$cityName = ucfirst(htmlspecialchars($_POST['city']));
+$zipCodeNo = htmlspecialchars($_POST['zipcode']);
     if (!empty($invalidFields)) {
-        // TODO: handle errors
-    } else {
-        // TODO: handle successful submission
-    }
+        $errors = array(); 
+        foreach ($invalidFields as $field) {
+            $errors[] = "Please write your " . $field;
+        }
+        echo implode('<br>', $errors);
+    } else { ?>
+        <h2> <?= "Order sent succesfully!" ?> </h2>
+        <p> <?= "Delivery adress:" . " " . $streetName . " " . $streetNo . ", " . $cityName . ", " . $zipCodeNo ?> </p>
+    <?php }
 }
 
-// TODO: replace this if by an actual check for the form to be submitted
-$formSubmitted = false;
-if ($formSubmitted) {
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
     handleForm();
 }
 

@@ -11,14 +11,16 @@
 <hr>
 <h2>You ordered:</h2>
 <?php 
-  $products = $_POST["products"];
-    if (is_array($products)) {
-        foreach ($products as $product) { 
-            echo "<p>" . htmlspecialchars($product) . "</p>";
-        }
-    } else {
-        echo "No products selected";
-  }
+  // $products = $_POST["products"];
+  //   if (is_array($products)) {
+  //       foreach ($products as $product) { 
+  //           echo "<p>" . htmlspecialchars($product) . "</p>";
+  //       }
+  //   } else {
+  //       echo "No products selected";
+  // }
+
+
 ?>
 <hr>
 <h2>It will be delivered to:</h2>
