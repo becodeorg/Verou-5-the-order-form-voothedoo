@@ -14,7 +14,7 @@ function whatIsHappening() {
     echo '<h2>$_GET</h2>';
     var_dump($_GET);
     echo '<h2>$_POST</h2>';
-    var_dump($_POST);
+    var_dump($_POST); 
     echo '<h2>$_COOKIE</h2>';
     var_dump($_COOKIE);
     echo '<h2>$_SESSION</h2>';
@@ -23,7 +23,11 @@ function whatIsHappening() {
 
 // TODO: provide some products (you may overwrite the example)
 $products = [
-    ['name' => 'Your favourite drink', 'price' => 2.5],
+    ['name' => 'Laptop Shaped Punching Bag Stress Reliever (for those learning PHP)', 'price' => 19.99],
+    ['name' => 'Coffee Mug: \'I Speak Fluent PHP and Sarcasm\'', 'price' => 8.49],
+    ['name' => 'Hot Sauce (PHP Spicy Syntax)', 'price' => 11.99],
+    ['name' => 'PHP Coding Gloves (Don\'t get dirty)', 'price' => 9.99],
+    ['name' => 'Error Message Translator Poster', 'price' => 7.49],
 ];
 
 $totalValue = 0;
@@ -53,4 +57,6 @@ if ($formSubmitted) {
     handleForm();
 }
 
+
 require 'form-view.php';
+

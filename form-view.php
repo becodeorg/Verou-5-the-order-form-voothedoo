@@ -1,4 +1,13 @@
-<?php // This file is mostly containing things for your view / html ?>
+<?php // This file is mostly containing things for your view / html
+    $total = 0;
+        foreach ($products as $product) {
+        $total = $product["price"] + $total;
+    }
+    echo $total;
+    echo "<pre>"; 
+
+    echo "</pre>";
+?>
 
 <!doctype html>
 <html lang="en">
@@ -9,7 +18,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" type="text/css"
           rel="stylesheet"/>
-    <title>Your fancy store</title>
+    <title>PixelPalace</title>
 </head>
 <body>
 <div class="container">
@@ -27,7 +36,7 @@
         </ul>
     </nav>
     */ ?>
-    <form method="POST">
+    <form action="./order-confrimation.php" method="POST">
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="email">E-mail:</label>
@@ -65,9 +74,9 @@
             <legend>Products</legend>
             <?php foreach ($products as $i => $product): ?>
                 <label>
-					<?php // <?= is equal to <?php echo ?>
-                    <input type="checkbox" value="1" name="products[<?php echo $i ?>]"/> <?php echo $product['name'] ?> -
-                    &euro; <?= number_format($product['price'], 2) ?></label><br />
+                    <input type="checkbox" value="<?= $product['name'] ?>" name="products[<?php echo $i ?>]"/> <?php echo $product['name'] ?> - &euro; <?= number_format($product['price'], 2) ?>
+                </label>
+                <br />
             <?php endforeach; ?>
         </fieldset>
 
@@ -75,7 +84,7 @@
     </form>
 
     <footer>You already ordered <strong>&euro; <?php echo $totalValue ?></strong> in food and drinks.</footer>
-</div>
+</div> 
 
 <style>
     footer {
