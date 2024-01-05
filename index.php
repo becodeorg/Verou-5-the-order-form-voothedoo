@@ -67,19 +67,19 @@ function validate()
 function handleForm()
 {
     $invalidFields = validate();
-$streetName = ucfirst(htmlspecialchars($_POST['street']));
-$streetNo = htmlspecialchars($_POST['streetnumber']);
-$cityName = ucfirst(htmlspecialchars($_POST['city']));
-$zipCodeNo = htmlspecialchars($_POST['zipcode']);
+    $streetName = ucfirst(htmlspecialchars($_POST['street']));
+    $streetNo = htmlspecialchars($_POST['streetnumber']);
+    $cityName = ucfirst(htmlspecialchars($_POST['city']));
+    $zipCodeNo = htmlspecialchars($_POST['zipcode']);
     if (!empty($invalidFields)) {
         $errors = array(); 
         foreach ($invalidFields as $field) {
-            $errors[] = "Please write your " . $field;
+            $errors[] = "<p class='alert alert-danger'>" . "Please write your " . $field . "</p>";
         }
         echo implode('<br>', $errors);
     } else { ?>
-        <h2> <?= "Order sent succesfully!" ?> </h2>
-        <p> <?= "Delivery adress:" . " " . $streetName . " " . $streetNo . ", " . $cityName . ", " . $zipCodeNo ?> </p>
+        <h2 class="alert alert-success"> <?= "Order sent succesfully!" ?> </h2>
+        <p class="alert alert-info"> <?= "Delivery adress:" . " " . $streetName . " " . $streetNo . ", " . $cityName . ", " . $zipCodeNo ?> </p>
     <?php }
 }
 
