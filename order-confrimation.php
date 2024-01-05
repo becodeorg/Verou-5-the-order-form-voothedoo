@@ -10,7 +10,7 @@
 <h1><?=("Order submitted succesfully")?></h1>
 <hr>
 <h2>You ordered:</h2>
-<?php 
+<!-- <?php 
   // $products = $_POST["products"];
   //   if (is_array($products)) {
   //       foreach ($products as $product) { 
@@ -19,9 +19,7 @@
   //   } else {
   //       echo "No products selected";
   // }
-
-
-?>
+?> -->
 <hr>
 <h2>It will be delivered to:</h2>
 <p>

@@ -11,15 +11,23 @@ session_start();
 
 // Use this function when you need to need an overview of these variables
 function whatIsHappening() {
-    echo '<h2>$_GET</h2>';
-    var_dump($_GET);
     echo '<h2>$_POST</h2>';
-    var_dump($_POST); 
+    echo '<pre>';
+    print_r($_POST); 
+    echo '</pre>';
+    echo '<br>';
+    echo '<br>';
+    echo '<pre>';
+    print_r($_POST['products']);
+    echo '</pre>';
+    echo '<br>';
+    echo '<br>';
     echo '<h2>$_COOKIE</h2>';
     var_dump($_COOKIE);
     echo '<h2>$_SESSION</h2>';
     var_dump($_SESSION);
 }
+
 
 // TODO: provide some products (you may overwrite the example)
 $products = [
@@ -66,6 +74,9 @@ function validate()
 
 function handleForm()
 {
+    global $products;
+    $totalPrice = 0;
+
     $invalidFields = validate();
     $streetName = ucfirst(htmlspecialchars($_POST['street']));
     $streetNo = htmlspecialchars($_POST['streetnumber']);
@@ -80,6 +91,18 @@ function handleForm()
     } else { ?>
         <h2 class="alert alert-success"> <?= "Order sent succesfully!" ?> </h2>
         <p class="alert alert-info"> <?= "Delivery adress:" . " " . $streetName . " " . $streetNo . ", " . $cityName . ", " . $zipCodeNo ?> </p>
+        <?php 
+            $postProducts = $_POST["products"];
+            if (is_array($postProducts)) {
+            foreach ($postProducts as $i => $postProduct) { 
+                echo "<p class='alert alert-secondary'>". "&euro; " . $products[$i]['price']." " . htmlspecialchars($products[$i]['name']) . "</p>" ;
+                $totalPrice += $products[$i]['price'];
+            }
+            } else {
+                echo "No products selected";
+            }
+        echo '<p class="alert alert-warning">' . 'Order Total: ' . '<strong>' . '&euro; '  .$totalPrice .'</strong>'. '</p>' ; 
+        ?>
     <?php }
 }
 

@@ -1,8 +1,4 @@
 <?php // This file is mostly containing things for your view / html
-    $total = 0;
-        foreach ($products as $product) {
-        $total = $product["price"] + $total;
-    }
     // echo $total;
 
 ?>
@@ -72,15 +68,13 @@
             <legend>Products</legend>
             <?php foreach ($products as $i => $product): ?>
                 <label>
-                    <input type="checkbox" value="<?= $product['name'] ?>" name="products[<?php echo $i ?>]"/> <?php echo $product['name'] ?> - &euro; <?= number_format($product['price'], 2) ?>
+                    <input type="checkbox" value="<?= $product['name'] ?>" name="products[<?= $i ?>]"/> <?php echo $product['name'] ?> - &euro; <?= number_format($product['price'], 2) ?>
                 </label>
                 <br />
             <?php endforeach; ?>
         </fieldset>
-
         <button type="submit" class="btn btn-primary">Order!</button>
     </form>
-
     <footer>You already ordered <strong>&euro; <?php echo $totalValue ?></strong> in food and drinks.</footer>
 </div> 
 
