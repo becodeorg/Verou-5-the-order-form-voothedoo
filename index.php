@@ -28,6 +28,11 @@ function whatIsHappening() {
     var_dump($_SESSION);
 }
 
+function checkEmailCookie($blabla) {
+    if (!empty($blabla)) {
+        echo $_COOKIE['e-mail'];
+    };
+}
 
 // TODO: provide some products (you may overwrite the example)
 $products = [
@@ -95,7 +100,7 @@ function handleForm()
             $postProducts = $_POST["products"];
             if (is_array($postProducts)) {
             foreach ($postProducts as $i => $postProduct) { 
-                echo "<p class='alert alert-secondary'>". "&euro; " . $products[$i]['price']." " . htmlspecialchars($products[$i]['name']) . "</p>" ;
+                echo "<p class='alert alert-light'>". "&euro; " . $products[$i]['price']." " .'<strong>'. htmlspecialchars($products[$i]['name']) . '</strong>'."</p>" ;
                 $totalPrice += $products[$i]['price'];
             }
             } else {
